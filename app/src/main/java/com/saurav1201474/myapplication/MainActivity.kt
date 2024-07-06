@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
 
                     binding.data.text = """
                         Abstract: ${firstArticle.abstract}
-                        URL: ${firstArticle.webURL}
-                        Lead Paragraph: ${firstArticle.leadParagraph}
+                        URL: ${firstArticle.web_url}
+                        Lead Paragraph: ${firstArticle.lead_paragraph}
                         Source: ${firstArticle.source}
                     """.trimIndent()
                 } else {

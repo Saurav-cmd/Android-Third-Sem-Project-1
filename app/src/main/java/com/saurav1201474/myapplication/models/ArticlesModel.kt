@@ -13,21 +13,21 @@ data class Response (
 
 data class Doc (
     val abstract: String? = null,
-    val webURL: String? = null,
+    val web_url: String? = null,
     val snippet: String? = null,
-    val leadParagraph: String? = null,
+    val lead_paragraph: String? = null,
     val source: Source? = null,
     val multimedia: List<Multimedia>? = null,
     val headline: Headline? = null,
     val keywords: List<Keyword>? = null,
-    val pubDate: String? = null,
-    val documentType: DocumentType? = null,
-    val newsDesk: String? = null,
-    val sectionName: String? = null,
+    val pub_date: String? = null,
+    val document_type: DocumentType? = null,
+    val news_desk: String? = null,
+    val section_name: String? = null,
     val byline: Byline? = null,
-    val typeOfMaterial: TypeOfMaterial? = null,
-    val id: String? = null,
-    val wordCount: Long? = null,
+    val type_of_material: TypeOfMaterial? = null,
+    val _id: String? = null,
+    val word_count: Long? = null,
     val uri: String? = null,
     val subsectionName: String? = null,
     val printSection: String? = null,
@@ -62,8 +62,8 @@ enum class DocumentType {
 data class Headline (
     val main: String? = null,
     val kicker: String? = null,
-    val contentKicker: Any? = null,
-    val printHeadline: String? = null,
+    val content_kicker: Any? = null,
+    val print_headline: String? = null,
     val name: Any? = null,
     val seo: Any? = null,
     val sub: Any? = null
@@ -99,7 +99,7 @@ data class Multimedia (
     val width: Long? = null,
     val legacy: Legacy? = null,
     val subType: String? = null,
-    val cropName: String? = null
+    val crop_name: String? = null
 )
 
 data class Legacy (
