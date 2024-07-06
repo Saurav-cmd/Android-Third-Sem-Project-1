@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 //this is where you will define the api services
 interface ApiService {
-    @GET("item")
+    @GET("search/v2/articlesearch.json?q=election&api-key=NFOb2nTHipmzq9mKHrG8m0ZS5t9N82ZU")
     fun getItems():Call<List<Item>>
 }
