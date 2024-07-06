@@ -9,7 +9,7 @@ object RetrofitBuilder {
 
     private val retrofit: Retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl("${UrlConst.BASE_URL}")
+            .baseUrl(UrlConst.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

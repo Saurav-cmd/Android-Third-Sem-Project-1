@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.saurav1201474.myapplication.api_service.ApiService
 import com.saurav1201474.myapplication.constants.RetrofitBuilder
-import com.saurav1201474.myapplication.models.ArticlesModel
+import quicktype.ArticlesModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,30 +14,26 @@ import retrofit2.Response
 class NewYorkTimesRepository {
     private val apiService: ApiService = RetrofitBuilder.createService(ApiService::class.java)
 
-    fun fetchArticles(): LiveData<List<ArticlesModel>> {
-        val data = MutableLiveData<List<ArticlesModel>>()
-
-        apiService.getArticles().enqueue(object : Callback<List<ArticlesModel>> {
+    fun fetchArticles(): LiveData<ArticlesModel> {
+        val data = MutableLiveData<ArticlesModel>()
+        Log.d("Fetch Articles....", "Inside fetch article")
+        apiService.getArticles().enqueue(object : Callback<ArticlesModel> {
             override fun onResponse(
-                call: Call<List<ArticlesModel>>,
-                response: Response<List<ArticlesModel>>
+                call: Call<ArticlesModel>,
+                response: Response<ArticlesModel>
             ) {
-                if (response.isSuccessful) {
+                Log.d("MainActivity", "Response Code: ${response.code()}") // Log HTTP response code
+                if (response.isSuccessful && response.body() != null) {
                     data.value = response.body()
-                    Log.d("API call success", "${data.value}")
                 } else {
-                    // handle the error here
-                    data.value = emptyList() // or null based on how you want to handle it
-                    Log.d("API call empty", "${data.value}")
-
+                    data.value = null
+                    //null
                 }
             }
 
-            override fun onFailure(call: Call<List<ArticlesModel>>, t: Throwable) {
-                // handle the failure here
-                data.value = emptyList() // or null based on how you want to handle it
-                Log.d("API call fail", "${data.value}")
-
+            override fun onFailure(call: Call<ArticlesModel>, t: Throwable) {
+                data.value = null //nsure data is never null
+                Log.e("MainActivity", "Error fetching articles: ${t.message}", t)
             }
         })
 
