@@ -1,4 +1,4 @@
-package quicktype
+package com.saurav1201474.myapplication.models
 
 data class ArticlesModel (
     val status: String? = null,

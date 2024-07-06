@@ -1,5 +1,6 @@
 package com.saurav1201474.myapplication
 
+
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
@@ -7,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.saurav1201474.myapplication.databinding.ActivityMainBinding
+import com.saurav1201474.myapplication.models.Doc
 import com.saurav1201474.myapplication.view_models.NewYorkTimesViewModel
-import quicktype.Doc
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                         Abstract: ${firstArticle.abstract}
                         URL: ${firstArticle.web_url}
                         Lead Paragraph: ${firstArticle.lead_paragraph}
-                        Source: ${firstArticle.source}
+                        com.saurav1201474.myapplication.models.Source: ${firstArticle.source}
                     """.trimIndent()
                 } else {
                     binding.data.text = "No articles available"

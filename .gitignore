@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Gradle files
 .gradle/
 build/
@@ -36,6 +37,8 @@ google-services.json
 =======
 =======
 >>>>>>> d435a1f (Initial Commit)
+=======
+>>>>>>> d435a1f (Initial Commit)
 *.iml
 .gradle
 /local.properties
@@ -52,6 +55,9 @@ google-services.json
 .cxx
 local.properties
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> d435a1f (Initial Commit)
+=======
 >>>>>>> d435a1f (Initial Commit)
 =======
 >>>>>>> d435a1f (Initial Commit)

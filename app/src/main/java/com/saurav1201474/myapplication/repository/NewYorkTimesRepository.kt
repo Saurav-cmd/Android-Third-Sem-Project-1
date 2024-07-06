@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.saurav1201474.myapplication.api_service.ApiService
 import com.saurav1201474.myapplication.constants.RetrofitBuilder
-import quicktype.ArticlesModel
+import com.saurav1201474.myapplication.models.ArticlesModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,7 +22,7 @@ class NewYorkTimesRepository {
                 call: Call<ArticlesModel>,
                 response: Response<ArticlesModel>
             ) {
-                Log.d("MainActivity", "Response Code: ${response.code()}") // Log HTTP response code
+                Log.d("MainActivity", "com.saurav1201474.myapplication.models.Response Code: ${response.code()}") // Log HTTP response code
                 if (response.isSuccessful && response.body() != null) {
                     data.value = response.body()
                 } else {
