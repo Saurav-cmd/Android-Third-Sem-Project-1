@@ -1,6 +1,5 @@
 package com.saurav1201474.myapplication.view_models
 
-
 import ArticlesModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

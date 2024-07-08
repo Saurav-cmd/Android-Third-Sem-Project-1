@@ -1,3 +1,4 @@
+
 data class ArticlesModel (
     val status: String? = null,
     val copyright: String? = null,
@@ -75,7 +76,7 @@ data class Keyword (
 )
 
 enum class Major {
-
+    N
 }
 
 enum class Name {
