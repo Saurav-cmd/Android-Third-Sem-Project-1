@@ -8,17 +8,17 @@ import com.google.gson.GsonBuilder
 
 object RetrofitBuilder {
 
-    private val gson: Gson = GsonBuilder()
-        .setLenient()
-        .create()
-
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(UrlConst.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create(gson))
+        .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    fun createService(): ApiService {
-        return retrofit.create(ApiService::class.java)
+    val createService: ApiService by lazy {
+        retrofit.create(ApiService::class.java)
     }
+
+//    fun createService(): ApiService {
+//        return retrofit.create(ApiService::class.java)
+//    }
 }
 

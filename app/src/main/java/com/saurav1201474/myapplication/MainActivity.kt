@@ -1,6 +1,11 @@
 package com.saurav1201474.myapplication
 
+import ArticlesModel
+import Doc
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: NewYorkTimesViewModel
     private lateinit var binding: ActivityMainBinding
     private lateinit var newYorkTimesAdapter: NewYorkTimesAdapter
+    private val articles = mutableListOf<Doc>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,14 +27,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Initialize RecyclerView and Adapter
-        newYorkTimesAdapter = NewYorkTimesAdapter(this, mutableListOf())
+        newYorkTimesAdapter = NewYorkTimesAdapter(this, articles)
         binding.recyclerView.apply {
             adapter = newYorkTimesAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
 
-        // Initialize ViewModel
-        viewModel = ViewModelProvider(this).get(NewYorkTimesViewModel::class.java)
+        binding.recyclerView.adapter = newYorkTimesAdapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
+        viewModel = ViewModelProvider(this)[NewYorkTimesViewModel::class.java]
 
         // Observe LiveData from ViewModel
         viewModel.articles.observe(this, Observer { articlesModel ->
@@ -38,7 +46,15 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        // Fetch articles initially
+        viewModel.isLoading.observe(this, Observer { isLoading ->
+            binding.progressCircular.visibility = if (isLoading) View.VISIBLE else View.GONE
+        })
+
+        viewModel.isLoadingText.observe(this, Observer { isLoadingText ->
+            binding.loading.visibility = if (isLoadingText) View.VISIBLE else View.GONE
+
+        })
+
         viewModel.refreshArticles()
     }
 }

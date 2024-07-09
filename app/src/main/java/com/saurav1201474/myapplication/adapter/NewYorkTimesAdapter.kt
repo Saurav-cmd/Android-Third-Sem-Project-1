@@ -2,6 +2,7 @@ package com.saurav1201474.myapplication.adapter
 
 import Doc
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.saurav1201474.myapplication.R
 import com.saurav1201474.myapplication.constants.ImageConcat
+import com.saurav1201474.myapplication.constants.UrlConst
 
 
 class NewYorkTimesAdapter(
@@ -39,11 +41,8 @@ class NewYorkTimesAdapter(
     }
 
     inner class NewYorkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //        private val abstractTv: TextView = itemView.findViewById(R.id.abstractTv)
-//        private val snippetTv: TextView = itemView.findViewById(R.id.snippetTV)
         private val image: ImageView = itemView.findViewById(R.id.imageView)
         private val leadParagraphTv: TextView = itemView.findViewById(R.id.leadParagraphTV)
-//        private val sourceTv: TextView = itemView.findViewById(R.id.sourceTV)
 
         fun bind(article: Doc) {
             val multimedia = article.multimedia
@@ -60,8 +59,17 @@ class NewYorkTimesAdapter(
             } else {
                 image.setImageURI(null)
             }
-
             leadParagraphTv.text = article.lead_paragraph
+
+            itemView.setOnClickListener {
+                val webUrl = article.web_url
+                if(!webUrl.isNullOrEmpty()){
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse(webUrl)
+                    context.startActivity(intent)
+                }
+            }
+
         }
     }
 

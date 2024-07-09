@@ -14,7 +14,16 @@ class NewYorkTimesViewModel : ViewModel() {
 
     // Using MutableLiveData to update articles
     private val _articles = MutableLiveData<ArticlesModel>()
-    val articles: LiveData<ArticlesModel> = _articles
+    val articles: LiveData<ArticlesModel>
+        get() = _articles
+
+    private val _isLoading = MutableLiveData(false)
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
+    private val _isLoadingText = MutableLiveData(false)
+    val isLoadingText: LiveData<Boolean>
+        get() = _isLoadingText
 
     init {
         fetchArticles()
@@ -22,9 +31,13 @@ class NewYorkTimesViewModel : ViewModel() {
 
     private fun fetchArticles() {
         viewModelScope.launch {
+            _isLoading.value = true
+            _isLoadingText.value = true
             try {
                 val fetchedArticles = repository.fetchArticles()
                 _articles.value = fetchedArticles
+                _isLoading.value = false
+                _isLoadingText.value = false
             } catch (e: Exception) {
                 _articles.value = ArticlesModel()
             }

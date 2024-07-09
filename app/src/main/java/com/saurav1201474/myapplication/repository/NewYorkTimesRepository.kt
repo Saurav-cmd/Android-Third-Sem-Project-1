@@ -10,14 +10,17 @@ import retrofit2.await
 
 
 class NewYorkTimesRepository {
-    private val apiService: ApiService = RetrofitBuilder.createService()
+//    private val apiService: ApiService = RetrofitBuilder.createService()
+
+    //Instance of RetrofitBuilder
+    private val apiService = RetrofitBuilder.createService
 
     suspend fun fetchArticles(): ArticlesModel {
         return withContext(Dispatchers.IO) {
             try {
                 Log.d("Fetch Articles....", "Inside fetch article")
                 val response = apiService.getArticles()
-                response // Return the ArticlesModel directly
+                response
             } catch (e: Exception) {
                 Log.e("MainActivity", "Error fetching articles: ${e.message}", e)
                 ArticlesModel() // Return a default ArticlesModel or handle error case
