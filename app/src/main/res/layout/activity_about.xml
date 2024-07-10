@@ -8,24 +8,26 @@
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="392dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="204dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:paddingLeft="10sp"
         android:text="@string/saurav_adhikari"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailView" />
+        app:layout_constraintTop_toBottomOf="@+id/details" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="392dp"
-        android:layout_height="59dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="#0E0E0E"
-        android:padding="5sp"
-        android:text="The New York Times"
+        android:fontFamily="cursive"
+        android:padding="10dp"
+        android:text="@string/title"
+        android:textAlignment="center"
         android:textColor="#ECE9E9"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -35,20 +37,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/detailView"
-        android:layout_width="392dp"
+        android:id="@+id/details"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="48dp"
         android:padding="10sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="392dp"
-        android:layout_height="46dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:paddingLeft="10sp"
         android:text="@string/bhuwan_malla"
@@ -60,8 +63,8 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="390dp"
-        android:layout_height="46dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:paddingLeft="10sp"
         android:text="@string/gudwin_gupta"
@@ -73,8 +76,8 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="392dp"
-        android:layout_height="46dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:paddingLeft="10sp"
         android:text="Tashi Norbu Lama"

@@ -1,11 +1,9 @@
 package com.saurav1201474.myapplication
 
-import ArticlesModel
 import Doc
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,10 +17,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: NewYorkTimesViewModel
     private lateinit var binding: ActivityMainBinding
     private lateinit var newYorkTimesAdapter: NewYorkTimesAdapter
+
     private val articles = mutableListOf<Doc>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        enableEdgeToEdge()
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

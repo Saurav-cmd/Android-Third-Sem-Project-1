@@ -3,7 +3,6 @@ package com.saurav1201474.myapplication.adapter
 import Doc
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.saurav1201474.myapplication.R
 import com.saurav1201474.myapplication.constants.ImageConcat
-import com.saurav1201474.myapplication.constants.UrlConst
+import com.saurav1201474.myapplication.view.WebDesignActivity
 
 
 class NewYorkTimesAdapter(
@@ -63,14 +62,12 @@ class NewYorkTimesAdapter(
 
             itemView.setOnClickListener {
                 val webUrl = article.web_url
-                if(!webUrl.isNullOrEmpty()){
-                    val intent = Intent(Intent.ACTION_VIEW)
-                    intent.data = Uri.parse(webUrl)
+                if (!webUrl.isNullOrEmpty()){
+                    val intent = Intent(context, WebDesignActivity::class.java)
+                    intent.putExtra("Url", webUrl)
                     context.startActivity(intent)
                 }
             }
-
         }
     }
-
 }
