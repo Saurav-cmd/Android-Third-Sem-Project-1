@@ -21,9 +21,6 @@ class NewYorkTimesViewModel : ViewModel() {
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
-    private val _isLoadingText = MutableLiveData(false)
-    val isLoadingText: LiveData<Boolean>
-        get() = _isLoadingText
 
     init {
         fetchArticles()
@@ -32,7 +29,6 @@ class NewYorkTimesViewModel : ViewModel() {
     private fun fetchArticles() {
         viewModelScope.launch {
             _isLoading.value = true
-            _isLoadingText.value = true
             try {
                 val fetchedArticles = repository.fetchArticles()
                 _articles.value = fetchedArticles
@@ -40,7 +36,6 @@ class NewYorkTimesViewModel : ViewModel() {
                 _articles.value = ArticlesModel()
             } finally {
                 _isLoading.value = false
-                _isLoadingText.value = false
             }
         }
     }

@@ -1,16 +1,13 @@
 package com.saurav1201474.myapplication.fragments
 
 import Doc
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.saurav1201474.myapplication.MainActivity
 import com.saurav1201474.myapplication.adapter.NewYorkTimesAdapter
 import com.saurav1201474.myapplication.databinding.FragmentArticlesBinding
@@ -37,15 +34,12 @@ class ArticlesFragment : Fragment() {
 
         setupRecyclerView()
 
-        // Initialize ViewModel
         viewModel = (requireActivity() as MainActivity).getNewYorkTimesViewModel()
         observeViewModel()
 
         // Setup swipe to refresh listener
         binding.swipeRefreshLayout.setOnRefreshListener {
-            binding.fragmentArticleMainContainer.visibility = View.GONE
             viewModel.refreshArticle()
-            binding.fragmentArticleMainContainer.visibility = View.VISIBLE
         }
     }
 
@@ -66,11 +60,9 @@ class ArticlesFragment : Fragment() {
 
         viewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
             binding.progressCircular.visibility = if (isLoading) View.VISIBLE else View.GONE
-            binding.swipeRefreshLayout.isRefreshing = isLoading  // Stop swipe refresh animation
-        })
-
-        viewModel.isLoadingText.observe(viewLifecycleOwner, Observer { isLoadingText ->
-            binding.loading.visibility = if (isLoadingText) View.VISIBLE else View.GONE
+            binding.loading.visibility = if (isLoading) View.VISIBLE else View.GONE
+            binding.swipeRefreshLayout.isRefreshing = isLoading
+            binding.fragmentArticleMainContainer.visibility = if (isLoading) View.GONE else View.VISIBLE
         })
     }
 
