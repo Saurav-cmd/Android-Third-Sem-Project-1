@@ -10,9 +10,9 @@ import kotlinx.coroutines.launch
 
 
 class NewYorkTimesViewModel : ViewModel() {
+
     private val repository = NewYorkTimesRepository()
 
-    // Using MutableLiveData to update articles
     private val _articles = MutableLiveData<ArticlesModel>()
     val articles: LiveData<ArticlesModel>
         get() = _articles
@@ -36,17 +36,16 @@ class NewYorkTimesViewModel : ViewModel() {
             try {
                 val fetchedArticles = repository.fetchArticles()
                 _articles.value = fetchedArticles
-                _isLoading.value = false
-                _isLoadingText.value = false
             } catch (e: Exception) {
                 _articles.value = ArticlesModel()
+            } finally {
+                _isLoading.value = false
+                _isLoadingText.value = false
             }
         }
     }
 
-    fun refreshArticles() {
+    fun refreshArticle(){
         fetchArticles()
     }
 }
-
-

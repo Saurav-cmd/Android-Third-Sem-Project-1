@@ -1,61 +1,41 @@
 package com.saurav1201474.myapplication
 
-import Doc
 import android.os.Bundle
-import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.saurav1201474.myapplication.adapter.NewYorkTimesAdapter
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.saurav1201474.myapplication.databinding.ActivityMainBinding
 import com.saurav1201474.myapplication.view_models.NewYorkTimesViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: NewYorkTimesViewModel
     private lateinit var binding: ActivityMainBinding
-    private lateinit var newYorkTimesAdapter: NewYorkTimesAdapter
-
-    private val articles = mutableListOf<Doc>()
+    private lateinit var viewModel: NewYorkTimesViewModel // Define ViewModel here
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        enableEdgeToEdge()
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Initialize RecyclerView and Adapter
-        newYorkTimesAdapter = NewYorkTimesAdapter(this, articles)
-        binding.recyclerView.apply {
-            adapter = newYorkTimesAdapter
-            layoutManager = LinearLayoutManager(this@MainActivity)
-        }
+        // Initialize ViewModel
+        viewModel =
+            ViewModelProvider(this)[NewYorkTimesViewModel::class.java]
 
-        binding.recyclerView.adapter = newYorkTimesAdapter
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
+                ?: return
 
-        viewModel = ViewModelProvider(this)[NewYorkTimesViewModel::class.java]
+        val navController = navHostFragment.navController
+        val bottomNavigationView: BottomNavigationView = binding.bottomNavView
 
-        // Observe LiveData from ViewModel
-        viewModel.articles.observe(this, Observer { articlesModel ->
-            articlesModel?.response?.docs?.let { docs ->
-                // Update RecyclerView with new list of articles (docs)
-                newYorkTimesAdapter.updateArticles(docs)
-            }
-        })
+        NavigationUI.setupWithNavController(bottomNavigationView, navController)
+    }
 
-        viewModel.isLoading.observe(this, Observer { isLoading ->
-            binding.progressCircular.visibility = if (isLoading) View.VISIBLE else View.GONE
-        })
-
-        viewModel.isLoadingText.observe(this, Observer { isLoadingText ->
-            binding.loading.visibility = if (isLoadingText) View.VISIBLE else View.GONE
-
-        })
-
-        viewModel.refreshArticles()
+    // Optionally, provide access to ViewModel to fragments if needed
+    fun getNewYorkTimesViewModel(): NewYorkTimesViewModel {
+        return viewModel
     }
 }
+
