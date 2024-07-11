@@ -1,18 +1,21 @@
 package com.saurav1201474.myapplication
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.saurav1201474.myapplication.databinding.ActivityMainBinding
 import com.saurav1201474.myapplication.view_models.NewYorkTimesViewModel
+import com.saurav1201474.myapplication.view_models.TopStoriesViewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: NewYorkTimesViewModel // Define ViewModel here
+    private lateinit var viewModel: NewYorkTimesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,5 +40,7 @@ class MainActivity : AppCompatActivity() {
     fun getNewYorkTimesViewModel(): NewYorkTimesViewModel {
         return viewModel
     }
+
+
 }
 

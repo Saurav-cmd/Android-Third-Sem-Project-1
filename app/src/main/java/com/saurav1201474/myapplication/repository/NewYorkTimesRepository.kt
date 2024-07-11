@@ -3,6 +3,7 @@ package com.saurav1201474.myapplication.repository
 import ArticlesModel
 import android.util.Log
 import com.saurav1201474.myapplication.constants.RetrofitBuilder
+import com.saurav1201474.myapplication.models.TopstoriesModal
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -24,4 +25,16 @@ class NewYorkTimesRepository {
             }
         }
     }
+
+    suspend fun fetchTopArticles() : TopstoriesModal{
+        return withContext(Dispatchers.IO){
+            try {
+                val response = apiService.getTopStories()
+                response
+            } catch (e: Exception) {
+                TopstoriesModal()
+            }
+        }
+    }
+
 }
