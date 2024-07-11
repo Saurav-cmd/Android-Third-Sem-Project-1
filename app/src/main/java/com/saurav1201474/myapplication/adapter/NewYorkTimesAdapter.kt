@@ -51,6 +51,8 @@ class NewYorkTimesAdapter(
                     val fullImageUrl = ImageConcat.concatImage("https://www.nytimes.com/", imageUrl)
                     Glide.with(itemView.context)
                         .load(fullImageUrl)
+                        .placeholder(R.drawable.newspaper_free_download_png)
+                        .error(R.drawable.newspaper_free_download_png)
                         .into(image)
                 } else {
                     image.setImageURI(null)

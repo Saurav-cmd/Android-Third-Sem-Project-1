@@ -53,6 +53,8 @@ class TopStoriesAdapter(private val context: Context, private val topStories: Mu
                     Log.d("TopStoriesAdapter", "Loading image: $fullImageUrl")
                     Glide.with(itemView.context)
                         .load(fullImageUrl)
+                        .placeholder(R.drawable.newspaper_free_download_png)
+                        .error(R.drawable.newspaper_free_download_png)
                         .into(image)
                 } else {
                     image.setImageURI(null)

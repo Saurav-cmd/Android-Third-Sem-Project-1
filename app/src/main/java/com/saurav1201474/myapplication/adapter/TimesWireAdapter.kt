@@ -54,6 +54,8 @@ class TimesWireAdapter(
                 if (!multimediaUrl.isNullOrEmpty()) {
                     Glide.with(context)
                         .load(multimediaUrl)
+                        .placeholder(R.drawable.newspaper_free_download_png)
+                        .error(R.drawable.newspaper_free_download_png)
                         .into(image)
                 } else {
                     // Handle case where there's no multimedia
