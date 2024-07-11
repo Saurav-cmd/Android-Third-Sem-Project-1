@@ -42,25 +42,21 @@ class TimesWireAdapter(
         RecyclerView.ViewHolder(itemView) {
         private val image: ImageView = itemView.findViewById(R.id.imageView)
         private val leadParagraphTv: TextView = itemView.findViewById(R.id.leadParagraphTV)
-        private val copyrightTv: TextView = itemView.findViewById(R.id.copyrightTV)
 
         fun bind(news: bhuwan.Result) {
             val result = news
             result.let {
                 leadParagraphTv.text = it.abstract
-//                copyrightTv.text = it.abstract
 
                 // Load the first multimedia item, if it exists
                 val multimediaUrl = it.multimedia?.firstOrNull()?.url
+
                 if (!multimediaUrl.isNullOrEmpty()) {
                     Glide.with(context)
                         .load(multimediaUrl)
                         .placeholder(R.drawable.newspaper_free_download_png)
                         .error(R.drawable.newspaper_free_download_png)
                         .into(image)
-                } else {
-                    // Handle case where there's no multimedia
-//                    image.setImageResource(R.drawable.placeholder_image) // Use a placeholder image
                 }
             }
         }

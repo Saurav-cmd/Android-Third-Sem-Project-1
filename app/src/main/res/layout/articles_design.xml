@@ -49,18 +49,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-            <TextView
-                android:id="@+id/copyrightTV"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="3dp"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/leadParagraphTV" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

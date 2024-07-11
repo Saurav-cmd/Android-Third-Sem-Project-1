@@ -2,7 +2,6 @@ package com.saurav1201474.myapplication.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,8 +40,6 @@ class TopStoriesAdapter(private val context: Context, private val topStories: Mu
         RecyclerView.ViewHolder(itemView) {
         private val image: ImageView = itemView.findViewById(R.id.imageView)
         private val title: TextView = itemView.findViewById(R.id.leadParagraphTV)
-        private val copyrightTv: TextView = itemView.findViewById(R.id.copyrightTV)
-
 
         fun bind(topStories: Result) {
             val multimedia = topStories.multimedia
@@ -50,7 +47,6 @@ class TopStoriesAdapter(private val context: Context, private val topStories: Mu
                 val imageUrl = multimedia[0].url
                 if (!imageUrl.isNullOrEmpty()) {
                     val fullImageUrl = ImageConcat.concatImage("", imageUrl)
-                    Log.d("TopStoriesAdapter", "Loading image: $fullImageUrl")
                     Glide.with(itemView.context)
                         .load(fullImageUrl)
                         .placeholder(R.drawable.newspaper_free_download_png)
@@ -63,7 +59,6 @@ class TopStoriesAdapter(private val context: Context, private val topStories: Mu
                 image.setImageURI(null)
             }
             title.text = topStories.title
-//            copyrightTv.text = topStories.abstract
 
             itemView.setOnClickListener {
                 val url = topStories.url

@@ -1,5 +1,6 @@
 package com.saurav1201474.myapplication.view
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ class WebDesignActivity : AppCompatActivity() {
         enableEdgeToEdge()
         val binding = ActivityWebDesignBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         val webView = binding.webview
 

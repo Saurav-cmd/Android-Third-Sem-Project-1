@@ -25,7 +25,7 @@ class TimesWireFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentTimesWireBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -50,7 +50,6 @@ class TimesWireFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.timesWire.observe(viewLifecycleOwner, Observer { timesWire ->
-//            timeWireAdapter.updateTimeWire(timeWires)
             timesWire?.results?.let { results ->
                 timeWireAdapter.updateTimeWire(results)
             }
