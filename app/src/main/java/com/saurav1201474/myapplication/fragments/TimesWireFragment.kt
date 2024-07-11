@@ -54,7 +54,6 @@ class TimesWireFragment : Fragment() {
             }
         })
 
-
         viewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
             binding.progressCircular.visibility = if (isLoading) View.VISIBLE else View.GONE
             binding.loading.visibility = if (isLoading) View.VISIBLE else View.GONE
