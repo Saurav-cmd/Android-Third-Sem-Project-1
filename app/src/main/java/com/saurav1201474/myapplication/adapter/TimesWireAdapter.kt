@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import bhuwan.TimesWireModal
 import com.bumptech.glide.Glide
 import com.saurav1201474.myapplication.R
+import com.saurav1201474.myapplication.models.Result
 
 
 class TimesWireAdapter(
     private val context: Context,
-    private val timesWires: MutableList<TimesWireModal>
+    private val timesWires: MutableList<bhuwan.Result>
 ) : RecyclerView.Adapter<TimesWireAdapter.TimesWireViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimesWireViewHolder {
@@ -30,7 +31,7 @@ class TimesWireAdapter(
         holder.bind(timesWires[position])
     }
 
-    fun updateTimeWire(timeWire: List<TimesWireModal>) {
+    fun updateTimeWire(timeWire: List<bhuwan.Result>) {
         timesWires.clear()
         timesWires.addAll(timeWire)
         notifyDataSetChanged()
@@ -43,11 +44,11 @@ class TimesWireAdapter(
         private val leadParagraphTv: TextView = itemView.findViewById(R.id.leadParagraphTV)
         private val copyrightTv: TextView = itemView.findViewById(R.id.copyrightTV)
 
-        fun bind(news: TimesWireModal) {
-            val result = news.results?.firstOrNull()
-            result?.let {
+        fun bind(news: bhuwan.Result) {
+            val result = news
+            result.let {
                 leadParagraphTv.text = it.abstract
-                copyrightTv.text = news.copyright
+//                copyrightTv.text = it.abstract
 
                 // Load the first multimedia item, if it exists
                 val multimediaUrl = it.multimedia?.firstOrNull()?.url

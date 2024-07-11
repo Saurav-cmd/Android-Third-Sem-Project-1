@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import bhuwan.Result
 import bhuwan.TimesWireModal
 import com.saurav1201474.myapplication.adapter.TimesWireAdapter
 import com.saurav1201474.myapplication.databinding.FragmentTimesWireBinding
@@ -18,7 +19,7 @@ class TimesWireFragment : Fragment() {
     private lateinit var binding: FragmentTimesWireBinding
     private val viewModel: TimesWireViewModel by viewModels()
     private lateinit var timeWireAdapter: TimesWireAdapter
-    private val timeWires = mutableListOf<TimesWireModal>()
+    private val timeWires = mutableListOf<Result>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,8 +50,9 @@ class TimesWireFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.timesWire.observe(viewLifecycleOwner, Observer { timesWire ->
+//            timeWireAdapter.updateTimeWire(timeWires)
             timesWire?.results?.let { results ->
-//                timeWireAdapter.updateTimeWire(results)
+                timeWireAdapter.updateTimeWire(results)
             }
         })
 
