@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/timesWireFragment"
-        android:name="com.saurav1201474.myapplication.fragments.TopStoriesFragment"
+        android:name="com.saurav1201474.myapplication.fragments.TimesWireFragment"
         android:label="Daily News"
-        tools:layout="@layout/fragment_top_stories" />
+        tools:layout="@layout/fragment_times_wire" />
 
     <fragment
         android:id="@+id/aboutFragment"
