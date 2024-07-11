@@ -15,7 +15,7 @@ import com.saurav1201474.myapplication.constants.ImageConcat
 import com.saurav1201474.myapplication.models.Result
 import com.saurav1201474.myapplication.view.WebDesignActivity
 
-class TopStoriesAdapter(private val context: Context, private var topStories: MutableList<Result>) :
+class TopStoriesAdapter(private val context: Context, private val topStories: MutableList<Result>) :
     RecyclerView.Adapter<TopStoriesAdapter.TopStoriesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopStoriesViewHolder {
@@ -40,7 +40,9 @@ class TopStoriesAdapter(private val context: Context, private var topStories: Mu
     inner class TopStoriesViewHolder(private val itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         private val image: ImageView = itemView.findViewById(R.id.imageView)
-        private val leadParagraphTv: TextView = itemView.findViewById(R.id.leadParagraphTV)
+        private val title: TextView = itemView.findViewById(R.id.leadParagraphTV)
+        private val copyrightTv: TextView = itemView.findViewById(R.id.copyrightTV)
+
 
         fun bind(topStories: Result) {
             val multimedia = topStories.multimedia
@@ -53,14 +55,13 @@ class TopStoriesAdapter(private val context: Context, private var topStories: Mu
                         .load(fullImageUrl)
                         .into(image)
                 } else {
-                    Log.d("imageUrl null", "Image URL is null or empty")
                     image.setImageURI(null)
                 }
             } else {
-                Log.d("multimedia null", "Multimedia list is null or empty")
                 image.setImageURI(null)
             }
-            leadParagraphTv.text = topStories.title
+            title.text = topStories.title
+//            copyrightTv.text = topStories.abstract
 
             itemView.setOnClickListener {
                 val url = topStories.url

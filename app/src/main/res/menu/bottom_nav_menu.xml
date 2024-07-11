@@ -4,12 +4,20 @@
         android:id="@+id/articlesFragment"
         android:icon="@drawable/baseline_article_24"
         android:title="Article" />
-    <item
-        android:id="@+id/aboutFragment"
-        android:icon="@drawable/baseline_info_24"
-        android:title="About" />
+
     <item
         android:id="@+id/topStoriesFragment"
         android:icon="@drawable/baseline_web_stories_24"
         android:title="Top Stories" />
+
+    <item
+        android:id="@+id/timesWireFragment"
+        android:icon="@drawable/baseline_newspaper_24"
+        android:title="Daily News" />
+
+    <item
+        android:id="@+id/aboutFragment"
+        android:icon="@drawable/baseline_info_24"
+        android:title="About" />
+
 </menu>
