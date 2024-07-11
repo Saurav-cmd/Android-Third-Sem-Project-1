@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class TopStoriesViewModel() : ViewModel() {
+class TopStoriesViewModel : ViewModel() {
 
     private val repository = NewYorkTimesRepository()
 
@@ -26,7 +26,7 @@ class TopStoriesViewModel() : ViewModel() {
         fetchTopStories()
     }
 
-    private fun fetchTopStories() {
+    fun fetchTopStories() {
         viewModelScope.launch {
             _isLoading.value = true
             try {
@@ -37,8 +37,6 @@ class TopStoriesViewModel() : ViewModel() {
             } finally {
                 _isLoading.value = false
             }
-
         }
     }
-
 }

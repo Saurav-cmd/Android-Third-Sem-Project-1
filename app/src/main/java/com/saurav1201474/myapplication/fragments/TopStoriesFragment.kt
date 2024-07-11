@@ -33,6 +33,7 @@ class TopStoriesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
+        setupSwipeRefresh()
 
         viewModel.topStories.observe(viewLifecycleOwner, Observer { results ->
             results.results?.let { results ->
@@ -56,4 +57,9 @@ class TopStoriesFragment : Fragment() {
         }
     }
 
+    private fun setupSwipeRefresh() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.fetchTopStories()
+        }
+    }
 }
